@@ -1,6 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.db import connection
 from .models import ThemeSettings, SiteSettings, Skill, Project, Experience, Education, LandingPageSection, Service, Testimonial
+
+
+def healthcheck(request):
+    """Simple healthcheck endpoint for Railway"""
+    try:
+        # Test database connection
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+        return JsonResponse({"status": "healthy", "database": "connected"})
+    except Exception as e:
+        return JsonResponse({"status": "unhealthy", "error": str(e)}, status=500)
 
 
 def home_view(request, *args, **kwargs):

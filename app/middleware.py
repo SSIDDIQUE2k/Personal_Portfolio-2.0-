@@ -46,17 +46,3 @@ class LocalhostCOOPMiddleware:
             response['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
         
         return response
-
-# Custom middleware to handle COOP headers for localhost
-class LocalhostCOOPMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
-
-    def __call__(self, request):
-        response = self.get_response(request)
-        
-        # Only set COOP header for localhost/127.0.0.1
-        if request.get_host() in ['localhost:8000', '127.0.0.1:8000', 'localhost', '127.0.0.1']:
-            response['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
-        
-        return response

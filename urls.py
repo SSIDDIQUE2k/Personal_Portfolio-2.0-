@@ -10,12 +10,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 # Import the views from app.views
-from app.views import theme_api, home_view, about_view
+from app.views import theme_api, home_view, about_view, healthcheck
 
 urlpatterns = [
     path("", home_view),
     path("about/", about_view),
     path("api/theme/", theme_api, name="theme_api"),
+    path("health/", healthcheck, name="healthcheck"),
     path('admin/', admin.site.urls),
 ]
 
