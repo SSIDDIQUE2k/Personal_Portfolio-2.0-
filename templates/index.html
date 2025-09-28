@@ -141,7 +141,7 @@
     </style>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6.1">
 </head>
 <body>
     <!-- Animated Stars Background -->
@@ -869,6 +869,8 @@
         console.log('Is mobile:', window.innerWidth <= 576);
         console.log('Nav toggle element:', document.getElementById('nav-toggle') ? 'Found' : 'Not found');
         console.log('Sidebar element:', document.getElementById('sidebar') ? 'Found' : 'Not found');
+        console.log('Nav toggle display:', window.getComputedStyle(document.getElementById('nav-toggle')).display);
+        console.log('Nav toggle visibility:', window.getComputedStyle(document.getElementById('nav-toggle')).visibility);
         console.log('Theme manager loaded:', document.querySelector('script[src*="theme-manager.js"]') ? 'Yes' : 'No');
         console.log('Main JS loaded:', document.querySelector('script[src*="main.js"]') ? 'Yes' : 'No');
         
