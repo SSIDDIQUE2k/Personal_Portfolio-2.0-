@@ -49,12 +49,12 @@ class Command(BaseCommand):
                 'card_color': '#16213e',
                 'font_family': 'Poppins',
                 'heading_font': 'Turret Road',
-                'font_size_base': '16px',
-                'sidebar_width': '60px',
-                'border_radius': '8px',
-                'spacing_unit': '1rem',
+                'font_size_base': 16,
+                'sidebar_width': 100,
+                'border_radius': 8,
+                'spacing_unit': 16,
                 'enable_animations': True,
-                'animation_speed': '0.3s',
+                'animation_speed': 1.0,
                 'enable_stars': True,
             }
         )
