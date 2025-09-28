@@ -125,16 +125,28 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
+    // Count the number of slides
+    const slides = swiperContainer.querySelectorAll('.swiper-slide');
+    const slideCount = slides.length;
+    
+    // Determine if we should enable loop mode
+    // Loop mode requires at least 2 slides, but for better UX, we'll use 3+
+    const enableLoop = slideCount >= 3;
+    
+    if (!enableLoop && slideCount < 2) {
+        console.warn('Not enough testimonial slides for carousel. Consider adding more testimonials.');
+        return;
+    }
     
     // Initialize Swiper after DOM is loaded
     let swiper = new Swiper(".testimonials-container", {
         spaceBetween: 24,
-        loop: true,
+        loop: enableLoop, // Only enable loop if we have enough slides
         grabCursor: true,
-        autoplay: {
+        autoplay: enableLoop ? { // Only enable autoplay if loop is enabled
             delay: 5000,
             disableOnInteraction: false,
-        },
+        } : false,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -145,18 +157,20 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         breakpoints: {
             576: {
-                slidesPerView: 1,
+                slidesPerView: Math.min(1, slideCount),
             },
             768: {
-                slidesPerView: 2,
+                slidesPerView: Math.min(2, slideCount),
                 spaceBetween: 48,
             },
             1024: {
-                slidesPerView: 3,
+                slidesPerView: Math.min(3, slideCount),
                 spaceBetween: 48,
             },
         },
     });
+    
+    console.log(`Swiper initialized with ${slideCount} slides, loop: ${enableLoop}`);
     
 });
 
