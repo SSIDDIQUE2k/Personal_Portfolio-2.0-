@@ -41,6 +41,66 @@
             overflow: visible !important;
             text-overflow: unset !important;
         }
+        
+        /* Additional fallback styles for production */
+        body {
+            font-family: 'Poppins', Arial, sans-serif !important;
+            background-color: #1a1a2e !important;
+            color: #ffffff !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .home-container {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+            align-items: center !important;
+            min-height: 100vh !important;
+            padding: 2rem !important;
+        }
+        
+        .home-data {
+            z-index: 2 !important;
+        }
+        
+        .home-title {
+            font-size: 3rem !important;
+            font-weight: bold !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+        }
+        
+        .home-subtitle {
+            font-size: 1.5rem !important;
+            color: #667eea !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .home-description {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 2rem !important;
+            color: #cccccc !important;
+        }
+        
+        .button {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 1rem 2rem !important;
+            background-color: #667eea !important;
+            color: white !important;
+            text-decoration: none !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .button:hover {
+            background-color: #5a6fd8 !important;
+            transform: translateY(-2px) !important;
+        }
     </style>
 
     {% load static %}
@@ -757,5 +817,28 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'js/theme-manager.js' %}?v=2.6"></script>
     <script src="{% static 'js/main.js' %}?v=4.8"></script>
+    
+    <!-- Debug script to check if static files are loading -->
+    <script>
+        console.log('=== PORTFOLIO DEBUG INFO ===');
+        console.log('CSS loaded:', document.querySelector('link[href*="style.css"]') ? 'Yes' : 'No');
+        console.log('Unicons loaded:', document.querySelector('link[href*="unicons"]') ? 'Yes' : 'No');
+        console.log('Boxicons loaded:', document.querySelector('link[href*="boxicons"]') ? 'Yes' : 'No');
+        console.log('Swiper loaded:', document.querySelector('link[href*="swiper"]') ? 'Yes' : 'No');
+        console.log('Social links found:', document.querySelectorAll('.home-social-link').length);
+        console.log('Contact info found:', document.querySelectorAll('.info-item').length);
+        console.log('Theme manager loaded:', document.querySelector('script[src*="theme-manager.js"]') ? 'Yes' : 'No');
+        console.log('Main JS loaded:', document.querySelector('script[src*="main.js"]') ? 'Yes' : 'No');
+        
+        // Check if CSS is actually applied
+        const testEl = document.createElement('div');
+        testEl.className = 'home-social-link';
+        document.body.appendChild(testEl);
+        const styles = window.getComputedStyle(testEl);
+        console.log('CSS styles applied:', styles.color !== 'rgb(0, 0, 0)' ? 'Yes' : 'No');
+        document.body.removeChild(testEl);
+        
+        console.log('=== END DEBUG INFO ===');
+    </script>
 </body>
 </html>

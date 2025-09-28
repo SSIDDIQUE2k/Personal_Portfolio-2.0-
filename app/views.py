@@ -15,6 +15,23 @@ def healthcheck(request):
         return JsonResponse({"status": "unhealthy", "error": str(e)}, status=500)
 
 
+def static_test(request):
+    """Test endpoint to check if static files are accessible"""
+    from django.conf import settings
+    import os
+    
+    static_info = {
+        'STATIC_URL': settings.STATIC_URL,
+        'STATIC_ROOT': str(settings.STATIC_ROOT),
+        'STATICFILES_DIRS': [str(d) for d in settings.STATICFILES_DIRS],
+        'DEBUG': settings.DEBUG,
+        'static_root_exists': os.path.exists(settings.STATIC_ROOT),
+        'static_files_count': len(os.listdir(settings.STATIC_ROOT)) if os.path.exists(settings.STATIC_ROOT) else 0,
+    }
+    
+    return JsonResponse(static_info)
+
+
 def home_view(request, *args, **kwargs):
     # Get or create site settings
     site_settings = SiteSettings.objects.first()
