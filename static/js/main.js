@@ -218,18 +218,50 @@ function navHighlighter() {
 
 // Activating Sidebar
 
+// Mobile Navigation
 const navMenu = document.getElementById('sidebar');
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
 
+// Mobile navigation toggle
 if(navToggle) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-sidebar');
+        navMenu.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     })
 }
 
+// Close mobile navigation
 if(navClose) {
     navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-sidebar');
+        navMenu.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore scrolling
     })
 }
+
+// Close mobile navigation when clicking on nav links
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    })
+})
+
+// Close mobile navigation when clicking outside
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 576) {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            navMenu.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    }
+})
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 576) {
+        navMenu.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+})
