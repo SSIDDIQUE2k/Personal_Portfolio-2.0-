@@ -6,21 +6,58 @@
     <title>{{ site_settings.site_title|default:"Portfolio - Shazib" }}</title>
     <meta name="description" content="{{ site_settings.site_description|default:"Frontend Developer Portfolio" }}">
     <meta name="keywords" content="{{ site_settings.site_keywords|default:"portfolio, frontend, developer, web design" }}">
+    <!-- Primary icon fonts -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
+    <!-- Backup icon fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
     <!-- Fallback for icons if CDN fails -->
     <style>
-        /* Ensure icons are visible even if CDN fails */
-        .uil-facebook-f:before { content: "f"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-instagram:before { content: "i"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-twitter:before { content: "t"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-linkedin:before { content: "in"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-github:before { content: "gh"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-whatsapp:before { content: "w"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-envelope-edit:before { content: "@"; font-family: Arial, sans-serif; font-weight: bold; }
-        .uil-facebook-messenger:before { content: "m"; font-family: Arial, sans-serif; font-weight: bold; }
+        /* Enhanced icon fallbacks with Font Awesome backup */
+        .uil-facebook-f:before { 
+            content: "\f09a"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-instagram:before { 
+            content: "\f16d"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-twitter:before { 
+            content: "\f099"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-linkedin:before { 
+            content: "\f08c"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-github:before { 
+            content: "\f09b"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-whatsapp:before { 
+            content: "\f232"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-envelope-edit:before { 
+            content: "\f0e0"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
+        .uil-facebook-messenger:before { 
+            content: "\f39f"; 
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
+            font-weight: 900;
+        }
         
         /* Ensure social links and contact info are visible */
         .home-social-link {
@@ -823,12 +860,22 @@
         console.log('=== PORTFOLIO DEBUG INFO ===');
         console.log('CSS loaded:', document.querySelector('link[href*="style.css"]') ? 'Yes' : 'No');
         console.log('Unicons loaded:', document.querySelector('link[href*="unicons"]') ? 'Yes' : 'No');
+        console.log('Font Awesome loaded:', document.querySelector('link[href*="font-awesome"]') ? 'Yes' : 'No');
         console.log('Boxicons loaded:', document.querySelector('link[href*="boxicons"]') ? 'Yes' : 'No');
         console.log('Swiper loaded:', document.querySelector('link[href*="swiper"]') ? 'Yes' : 'No');
         console.log('Social links found:', document.querySelectorAll('.home-social-link').length);
         console.log('Contact info found:', document.querySelectorAll('.info-item').length);
         console.log('Theme manager loaded:', document.querySelector('script[src*="theme-manager.js"]') ? 'Yes' : 'No');
         console.log('Main JS loaded:', document.querySelector('script[src*="main.js"]') ? 'Yes' : 'No');
+        
+        // Test if Font Awesome icons are working
+        const testIcon = document.createElement('i');
+        testIcon.className = 'uil-facebook-f';
+        document.body.appendChild(testIcon);
+        const computedStyle = window.getComputedStyle(testIcon, ':before');
+        const iconContent = computedStyle.getPropertyValue('content');
+        console.log('Icon content test:', iconContent);
+        document.body.removeChild(testIcon);
         
         // Check if CSS is actually applied
         const testEl = document.createElement('div');
