@@ -128,6 +128,23 @@ else:
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ----------------------------------------------------
+# CSRF Configuration
+# ----------------------------------------------------
+# Get Railway domain from environment or use default
+RAILWAY_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'web-production-8f88a.up.railway.app')
+CSRF_TRUSTED_ORIGINS = [
+    f'https://{RAILWAY_DOMAIN}',
+    'https://web-production-8f88a.up.railway.app',  # Your current Railway domain
+    'http://localhost:8000',  # For local development
+    'http://127.0.0.1:8000',  # For local development
+]
+
+# Additional CSRF settings for production
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript access for AJAX requests
+CSRF_USE_SESSIONS = False
+
+# ----------------------------------------------------
 # Security headers (disabled for local dev)
 # ----------------------------------------------------
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
