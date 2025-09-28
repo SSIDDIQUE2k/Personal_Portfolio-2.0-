@@ -29,6 +29,56 @@ def healthcheck(request):
         }, status=500)
 
 
+def static_test(request):
+    """Test endpoint to check static file configuration"""
+    import os
+    
+    static_info = {
+        'STATIC_URL': settings.STATIC_URL,
+        'STATIC_ROOT': str(settings.STATIC_ROOT) if hasattr(settings, 'STATIC_ROOT') else None,
+        'STATICFILES_DIRS': [str(d) for d in settings.STATICFILES_DIRS] if hasattr(settings, 'STATICFILES_DIRS') else [],
+        'RAILWAY_ENVIRONMENT': bool(os.environ.get('RAILWAY_ENVIRONMENT')),
+        'static_root_exists': os.path.exists(settings.STATIC_ROOT) if hasattr(settings, 'STATIC_ROOT') else False,
+        'static_files_count': 0,
+        'sample_files': []
+    }
+    
+    # Check STATIC_ROOT if it exists
+    if hasattr(settings, 'STATIC_ROOT') and os.path.exists(settings.STATIC_ROOT):
+        try:
+            # Count files recursively
+            count = 0
+            sample_files = []
+            for root, dirs, files in os.walk(settings.STATIC_ROOT):
+                count += len(files)
+                if len(sample_files) < 5:  # Show first 5 files as samples
+                    sample_files.extend([os.path.join(root, f) for f in files[:5-len(sample_files)]])
+            
+            static_info['static_files_count'] = count
+            static_info['sample_files'] = [os.path.relpath(f, settings.STATIC_ROOT) for f in sample_files]
+        except Exception as e:
+            static_info['error'] = str(e)
+    
+    return JsonResponse(static_info)
+
+
+def static_test(request):
+    """Test endpoint to check if static files are accessible"""
+    from django.conf import settings
+    import os
+    
+    static_info = {
+        'STATIC_URL': settings.STATIC_URL,
+        'STATIC_ROOT': str(settings.STATIC_ROOT),
+        'STATICFILES_DIRS': [str(d) for d in settings.STATICFILES_DIRS],
+        'DEBUG': settings.DEBUG,
+        'static_root_exists': os.path.exists(settings.STATIC_ROOT),
+        'static_files_count': len(os.listdir(settings.STATIC_ROOT)) if os.path.exists(settings.STATIC_ROOT) else 0,
+    }
+    
+    return JsonResponse(static_info)
+
+
 def media_test(request):
     """Test endpoint to check media file configuration"""
     import os

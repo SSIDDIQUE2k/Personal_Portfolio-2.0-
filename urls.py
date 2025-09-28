@@ -21,6 +21,8 @@ urlpatterns = [
     path("static-test/", static_test, name="static_test"),
     path("media-test/", media_test, name="media_test"),
     path('admin/', admin.site.urls),
+    # Redirect favicon requests to static file
+    path("favicon.ico", lambda request: HttpResponse(status=302, headers={'Location': '/static/favicon.ico'})),
 ]
 
 # Serve media files (static files are handled by WhiteNoise)
