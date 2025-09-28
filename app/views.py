@@ -29,21 +29,35 @@ def healthcheck(request):
         }, status=500)
 
 
-def static_test(request):
-    """Test endpoint to check if static files are accessible"""
-    from django.conf import settings
+def media_test(request):
+    """Test endpoint to check media file configuration"""
     import os
     
-    static_info = {
-        'STATIC_URL': settings.STATIC_URL,
-        'STATIC_ROOT': str(settings.STATIC_ROOT),
-        'STATICFILES_DIRS': [str(d) for d in settings.STATICFILES_DIRS],
-        'DEBUG': settings.DEBUG,
-        'static_root_exists': os.path.exists(settings.STATIC_ROOT),
-        'static_files_count': len(os.listdir(settings.STATIC_ROOT)) if os.path.exists(settings.STATIC_ROOT) else 0,
+    media_info = {
+        'MEDIA_URL': settings.MEDIA_URL,
+        'MEDIA_ROOT': str(settings.MEDIA_ROOT),
+        'RAILWAY_ENVIRONMENT': bool(os.environ.get('RAILWAY_ENVIRONMENT')),
+        'media_root_exists': os.path.exists(settings.MEDIA_ROOT),
+        'media_files_count': 0,
+        'sample_files': []
     }
     
-    return JsonResponse(static_info)
+    if os.path.exists(settings.MEDIA_ROOT):
+        try:
+            # Count files recursively
+            count = 0
+            sample_files = []
+            for root, dirs, files in os.walk(settings.MEDIA_ROOT):
+                count += len(files)
+                if len(sample_files) < 5:  # Show first 5 files as samples
+                    sample_files.extend([os.path.join(root, f) for f in files[:5-len(sample_files)]])
+            
+            media_info['media_files_count'] = count
+            media_info['sample_files'] = [os.path.relpath(f, settings.MEDIA_ROOT) for f in sample_files]
+        except Exception as e:
+            media_info['error'] = str(e)
+    
+    return JsonResponse(media_info)
 
 
 def home_view(request, *args, **kwargs):

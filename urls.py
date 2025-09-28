@@ -10,7 +10,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 # Import the views from app.views
-from app.views import theme_api, home_view, about_view, healthcheck, static_test
+from app.views import theme_api, home_view, about_view, healthcheck, static_test, media_test
 
 urlpatterns = [
     path("", home_view),
@@ -19,6 +19,7 @@ urlpatterns = [
     path("health/", healthcheck, name="healthcheck"),
     path("health", healthcheck, name="healthcheck_no_slash"),  # Add without trailing slash
     path("static-test/", static_test, name="static_test"),
+    path("media-test/", media_test, name="media_test"),
     path('admin/', admin.site.urls),
 ]
 

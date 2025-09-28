@@ -1,0 +1,33 @@
+# Ignore local development files
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore local media files (Railway will use persistent volume)
+media/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+server.log
+
+# Ignore test files
+test_*.py
+*_test.py
