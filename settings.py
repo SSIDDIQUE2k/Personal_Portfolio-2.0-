@@ -13,9 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent  # flat layout
 # ----------------------------------------------------
 # Security
 # ----------------------------------------------------
-SECRET_KEY = "dev-secret-key-change-me"
-DEBUG = True
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "*"]
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY', "dev-secret-key-change-me")
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "127.0.0.1,localhost,*").split(',')
 
 # ----------------------------------------------------
 # Applications
@@ -69,12 +70,20 @@ WSGI_APPLICATION = "wsgi.application"
 # ----------------------------------------------------
 # Database
 # ----------------------------------------------------
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if os.environ.get('DATABASE_URL'):
+    # Production database (Railway PostgreSQL)
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    # Development database (SQLite)
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 # ----------------------------------------------------
 # Password validation
@@ -98,7 +107,20 @@ USE_TZ = True
 # Static files
 # ----------------------------------------------------
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"] if (BASE_DIR / "static").exists() else []
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# ----------------------------------------------------
+# Media files
+# ----------------------------------------------------
+if os.environ.get('RAILWAY_ENVIRONMENT'):
+    # Production: Use Railway's persistent volume for media files
+    MEDIA_ROOT = BASE_DIR / "storage"
+    MEDIA_URL = "/media/"
+else:
+    # Development: Use local media directory
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
 
 # ----------------------------------------------------
 # Default PK

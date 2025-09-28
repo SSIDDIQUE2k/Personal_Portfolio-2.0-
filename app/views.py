@@ -1,10 +1,50 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import ThemeSettings, SiteSettings, Skill, Project, Experience, Education
+from .models import ThemeSettings, SiteSettings, Skill, Project, Experience, Education, LandingPageSection, Service, Testimonial
 
 
 def home_view(request, *args, **kwargs):
-    return render(request, 'index.html')
+    # Get or create site settings
+    site_settings = SiteSettings.objects.first()
+    if not site_settings:
+        site_settings = SiteSettings.objects.create()
+    
+    # Get active theme
+    theme = ThemeSettings.objects.filter(is_active=True).first()
+    if not theme:
+        theme = ThemeSettings.objects.create(name="Default Theme", is_active=True)
+    
+    # Get all content data
+    skills = Skill.objects.filter(is_active=True).order_by('order', 'name')
+    projects = Project.objects.filter(is_active=True).order_by('order', '-created_at')
+    experiences = Experience.objects.filter(is_active=True).order_by('order', '-start_date')
+    education = Education.objects.filter(is_active=True).order_by('order', '-start_date')
+    services = Service.objects.filter(is_active=True).order_by('order', 'title')
+    testimonials = Testimonial.objects.filter(is_active=True).order_by('order', 'date')
+    landing_sections = LandingPageSection.objects.filter(is_active=True).order_by('order', 'title')
+    
+    # Group skills by category
+    skills_by_category = {
+        'frontend': skills.filter(category='frontend'),
+        'backend': skills.filter(category='backend'),
+        'tools': skills.filter(category='tools'),
+        'other': skills.filter(category='other'),
+    }
+    
+    context = {
+        'site_settings': site_settings,
+        'theme': theme,
+        'skills': skills,
+        'skills_by_category': skills_by_category,
+        'projects': projects,
+        'experiences': experiences,
+        'education': education,
+        'services': services,
+        'testimonials': testimonials,
+        'landing_sections': landing_sections,
+    }
+    
+    return render(request, 'index.html', context)
 
 
 def about_view(request, *args, **kwargs):

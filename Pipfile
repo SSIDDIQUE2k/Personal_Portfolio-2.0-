@@ -7,6 +7,9 @@ verify_ssl = true
 
 [packages]
 django = "*"
+django-storages = "*"
+boto3 = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.11"
