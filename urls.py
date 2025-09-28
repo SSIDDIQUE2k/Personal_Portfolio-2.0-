@@ -17,6 +17,7 @@ urlpatterns = [
     path("about/", about_view),
     path("api/theme/", theme_api, name="theme_api"),
     path("health/", healthcheck, name="healthcheck"),
+    path("health", healthcheck, name="healthcheck_no_slash"),  # Add without trailing slash
     path("static-test/", static_test, name="static_test"),
     path('admin/', admin.site.urls),
 ]

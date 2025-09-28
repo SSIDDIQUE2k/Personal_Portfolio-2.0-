@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.db import connection
+from django.utils import timezone
+from django.conf import settings
 from .models import ThemeSettings, SiteSettings, Skill, Project, Experience, Education, LandingPageSection, Service, Testimonial
 
 
@@ -10,9 +12,21 @@ def healthcheck(request):
         # Test database connection
         with connection.cursor() as cursor:
             cursor.execute("SELECT 1")
-        return JsonResponse({"status": "healthy", "database": "connected"})
+        
+        # Return more detailed health info
+        return JsonResponse({
+            "status": "healthy", 
+            "database": "connected",
+            "timestamp": str(timezone.now()),
+            "debug": settings.DEBUG,
+            "static_files": "configured"
+        })
     except Exception as e:
-        return JsonResponse({"status": "unhealthy", "error": str(e)}, status=500)
+        return JsonResponse({
+            "status": "unhealthy", 
+            "error": str(e),
+            "timestamp": str(timezone.now())
+        }, status=500)
 
 
 def static_test(request):
