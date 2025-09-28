@@ -9,8 +9,39 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-
+    
+    <!-- Fallback for icons if CDN fails -->
+    <style>
+        /* Ensure icons are visible even if CDN fails */
+        .uil-facebook-f:before { content: "f"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-instagram:before { content: "i"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-twitter:before { content: "t"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-linkedin:before { content: "in"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-github:before { content: "gh"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-whatsapp:before { content: "w"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-envelope-edit:before { content: "@"; font-family: Arial, sans-serif; font-weight: bold; }
+        .uil-facebook-messenger:before { content: "m"; font-family: Arial, sans-serif; font-weight: bold; }
+        
+        /* Ensure social links and contact info are visible */
+        .home-social-link {
+            display: inline-block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .info-item {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Ensure text is not truncated */
+        .home-description {
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: unset !important;
+        }
+    </style>
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5.6">
@@ -86,35 +117,25 @@
                 <div class="home-social">
                     <span class="home-social-follow">{{ site_settings.social_follow_text|default:"Follow Me" }}</span>
                     <div class="home-social-links">
-                        {% if site_settings.facebook_url %}
-                        <a href="{{ site_settings.facebook_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.1s;">
+                        <a href="{{ site_settings.facebook_url|default:'#' }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.1s;">
                             <i class="uil uil-facebook-f"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.instagram_url %}
-                        <a href="{{ site_settings.instagram_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.2s;">
+                        <a href="{{ site_settings.instagram_url|default:'#' }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.2s;">
                             <i class="uil uil-instagram"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.twitter_url %}
-                        <a href="{{ site_settings.twitter_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.3s;">
+                        <a href="{{ site_settings.twitter_url|default:'#' }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.3s;">
                             <i class="uil uil-twitter"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.linkedin_url %}
-                        <a href="{{ site_settings.linkedin_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.4s;">
+                        <a href="{{ site_settings.linkedin_url|default:'#' }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.4s;">
                             <i class="uil uil-linkedin"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.github_url %}
-                        <a href="{{ site_settings.github_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.5s;">
+                        <a href="{{ site_settings.github_url|default:'#' }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.5s;">
                             <i class="uil uil-github"></i>
                         </a>
-                        {% endif %}
                     </div>
                 </div>
 
@@ -164,7 +185,6 @@
                 </div>
             </div>
         </div>
-test
             
         </section>
 
@@ -706,35 +726,25 @@ test
                     </ul>
 
                     <div class="footer-socials">
-                        {% if site_settings.facebook_url %}
-                        <a href="{{ site_settings.facebook_url }}" target="_blank" class="footer-social">
+                        <a href="{{ site_settings.facebook_url|default:'#' }}" target="_blank" class="footer-social">
                             <i class="uil uil-facebook-f"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.instagram_url %}
-                        <a href="{{ site_settings.instagram_url }}" target="_blank" class="footer-social">
+                        <a href="{{ site_settings.instagram_url|default:'#' }}" target="_blank" class="footer-social">
                             <i class="uil uil-instagram"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.twitter_url %}
-                        <a href="{{ site_settings.twitter_url }}" target="_blank" class="footer-social">
+                        <a href="{{ site_settings.twitter_url|default:'#' }}" target="_blank" class="footer-social">
                             <i class="uil uil-twitter"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.linkedin_url %}
-                        <a href="{{ site_settings.linkedin_url }}" target="_blank" class="footer-social">
+                        <a href="{{ site_settings.linkedin_url|default:'#' }}" target="_blank" class="footer-social">
                             <i class="uil uil-linkedin"></i>
                         </a>
-                        {% endif %}
                         
-                        {% if site_settings.github_url %}
-                        <a href="{{ site_settings.github_url }}" target="_blank" class="footer-social">
+                        <a href="{{ site_settings.github_url|default:'#' }}" target="_blank" class="footer-social">
                             <i class="uil uil-github"></i>
                         </a>
-                        {% endif %}
                     </div>
                 </div>
 

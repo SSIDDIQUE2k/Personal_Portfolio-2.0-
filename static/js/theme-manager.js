@@ -87,12 +87,7 @@ class ThemeManager {
         root.style.setProperty('--text-color', theme.colors.text);
         root.style.setProperty('--card-color', theme.colors.card);
         
-        // Debug: Log the applied colors
-        console.log('Theme applied:', {
-            primary: theme.colors.primary,
-            secondary: theme.colors.secondary,
-            accent: theme.colors.accent
-        });
+        // Theme applied successfully
 
         // Apply typography
         root.style.setProperty('--font-family', theme.typography.font_family);
@@ -212,7 +207,7 @@ class ThemeManager {
                     if (JSON.stringify(newThemeData) !== JSON.stringify(this.themeData)) {
                         this.themeData = newThemeData;
                         this.applyTheme();
-                        console.log('Theme updated!');
+                        // Theme updated successfully
                     }
                 }
             } catch (error) {

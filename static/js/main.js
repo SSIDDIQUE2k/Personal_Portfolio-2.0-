@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    console.log("Initializing Swiper...");
     
     // Initialize Swiper after DOM is loaded
     let swiper = new Swiper(".testimonials-container", {
@@ -159,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
     
-    console.log("Swiper initialized successfully!", swiper);
 });
 
 // Input Animation

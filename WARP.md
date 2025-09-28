@@ -17,8 +17,7 @@ Common commands
 - Create an admin user (required to access /admin/)
   - pipenv run python manage.py createsuperuser
 - Test helpers in repo
-  - pipenv run python test_server.py
-  - pipenv run python test_django.py
+  - (Test files have been removed for production deployment)
 - Run a single Django test (when tests are added under a tests module)
   - pipenv run python manage.py test app.tests.test_module.TestCaseClass.test_method
 
@@ -56,10 +55,8 @@ High-level architecture and structure
     - LocalhostCOOPMiddleware: Optional helper to set Cross-Origin-Opener-Policy for localhost; disabled in default MIDDLEWARE (see settings.py).
 - URL routing (urls.py)
   - Maps "", "about/", "api/theme/", and "admin/" to views and admin site.
-- Alternative single-file setup (app.py)
-  - Provides a self-contained Django configuration (settings.configure) and defines urlpatterns, reusing the same models and views. Useful for quick experiments or running without the flat settings.py. Not used by manage.py.
 - Server helpers
-  - simple_server.py and test_server.py demonstrate booting Django and simple health checks, including exercising the theme_api via RequestFactory.
+  - simple_server.py demonstrates booting Django and simple health checks, including exercising the theme_api via RequestFactory.
 
 Important notes and behaviors
 - Admin access is enforced by middleware (not just Django’s default permissions). To enter /admin/, ensure the user has is_staff (or is_superuser) and is authenticated.
