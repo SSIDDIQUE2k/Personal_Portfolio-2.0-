@@ -192,7 +192,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#contact" class="nav-link animate-slideInLeft" style="animation-delay: 0.6s;">Contact</a>
+                            <a href="#testimonials" class="nav-link animate-slideInLeft" style="animation-delay: 0.6s;">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link animate-slideInLeft" style="animation-delay: 0.7s;">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -511,6 +515,7 @@
             </div>
         </section>
 
+
         <section class="work section" id="work">
             <h2 class="section-title" data-heading="{{ site_settings.portfolio_title|default:'My Portfolio' }}">{{ site_settings.portfolio_subtitle|default:"Recent Works" }}</h2>
 
@@ -643,7 +648,7 @@
             </div>
         </section>
 
-        <section class="testimonials section">
+        <section class="testimonials section" id="testimonials">
             <h2 class="section-title" data-heading="{{ site_settings.testimonials_title|default:'My clients say' }}">{{ site_settings.testimonials_subtitle|default:"Testimonials" }}</h2>
 
             <div class="testimonials-container container swiper">
@@ -845,7 +850,7 @@
                     </div>
                 </div>
 
-                <p class="footer-copy">&#169; {% if site_settings.footer_copyright_link and site_settings.footer_copyright_link_text %}<a href="{{ site_settings.footer_copyright_link }}">{{ site_settings.footer_copyright_link_text }}</a>{% else %}ULTRA CODE{% endif %}. {{ site_settings.footer_copyright_text|default:"All rights reserved" }}</p>
+                <p class="footer-copy">&#169; Shazib Siddique. {{ site_settings.footer_copyright_text|default:"All rights reserved" }}</p>
             </div>
         </footer>
     </main>
