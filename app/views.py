@@ -134,6 +134,14 @@ def home_view(request, *args, **kwargs):
     skills_by_category = {
         'frontend': skills.filter(category='frontend'),
         'backend': skills.filter(category='backend'),
+        'databases': skills.filter(category='databases'),
+        'apis': skills.filter(category='apis'),
+        'cloud': skills.filter(category='cloud'),
+        'infrastructure': skills.filter(category='infrastructure'),
+        'cicd': skills.filter(category='cicd'),
+        'containers': skills.filter(category='containers'),
+        'monitoring': skills.filter(category='monitoring'),
+        'security': skills.filter(category='security'),
         'tools': skills.filter(category='tools'),
         'other': skills.filter(category='other'),
     }

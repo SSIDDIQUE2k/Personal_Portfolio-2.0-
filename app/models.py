@@ -94,6 +94,7 @@ class SiteSettings(models.Model):
     twitter_url = models.URLField(blank=True, help_text="Twitter profile URL")
     linkedin_url = models.URLField(blank=True, help_text="LinkedIn profile URL")
     github_url = models.URLField(blank=True, help_text="GitHub profile URL")
+    pinterest_url = models.URLField(blank=True, help_text="Pinterest profile URL")
     
     # About Section
     about_title = models.CharField(max_length=200, default="About Me", help_text="About section title")
@@ -166,8 +167,16 @@ class Skill(models.Model):
     
     name = models.CharField(max_length=100, help_text="Skill name")
     category = models.CharField(max_length=50, choices=[
-        ('frontend', 'Frontend'),
-        ('backend', 'Backend'),
+        ('frontend', 'Frontend Development'),
+        ('backend', 'Backend Development'),
+        ('databases', 'Databases'),
+        ('apis', 'APIs & Integration'),
+        ('cloud', 'Cloud (AWS)'),
+        ('infrastructure', 'Infrastructure as Code'),
+        ('cicd', 'CI/CD & Automation'),
+        ('containers', 'Containers & Orchestration'),
+        ('monitoring', 'Monitoring & Logging'),
+        ('security', 'Security & DevSecOps'),
         ('tools', 'Tools'),
         ('other', 'Other')
     ], default='frontend', help_text="Skill category")

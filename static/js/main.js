@@ -129,24 +129,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const slides = swiperContainer.querySelectorAll('.swiper-slide');
     const slideCount = slides.length;
     
-    // Determine if we should enable loop mode
-    // Loop mode requires at least 2 slides, but for better UX, we'll use 3+
-    const enableLoop = slideCount >= 3;
+    // Use CSS animation for horizontal sliding instead of Swiper autoplay
+    const enableLoop = slideCount >= 1; // Enable loop even with 1 slide
     
-    if (!enableLoop && slideCount < 2) {
-        console.warn('Not enough testimonial slides for carousel. Consider adding more testimonials.');
+    if (slideCount === 0) {
+        console.warn('No testimonial slides found. Add testimonials in admin.');
         return;
     }
     
     // Initialize Swiper after DOM is loaded
     let swiper = new Swiper(".testimonials-container", {
         spaceBetween: 24,
-        loop: enableLoop, // Only enable loop if we have enough slides
+        loop: enableLoop, // Always enable loop for continuous movement
         grabCursor: true,
-        autoplay: enableLoop ? { // Only enable autoplay if loop is enabled
-            delay: 5000,
-            disableOnInteraction: false,
-        } : false,
+        autoplay: false, // Disable Swiper autoplay - using CSS animation instead
+        speed: 800, // Smooth transition speed
+        effect: 'slide', // Ensure slide effect is used
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -155,22 +153,29 @@ document.addEventListener('DOMContentLoaded', function() {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
+        slidesPerView: 1, // Always show only 1 slide at a time for true carousel
+        centeredSlides: true, // Center the active slide
         breakpoints: {
             576: {
-                slidesPerView: Math.min(1, slideCount),
+                slidesPerView: 1,
+                spaceBetween: 20,
             },
             768: {
-                slidesPerView: Math.min(2, slideCount),
-                spaceBetween: 48,
+                slidesPerView: 1,
+                spaceBetween: 24,
             },
             1024: {
-                slidesPerView: Math.min(3, slideCount),
-                spaceBetween: 48,
+                slidesPerView: 1,
+                spaceBetween: 32,
+            },
+            1200: {
+                slidesPerView: 1,
+                spaceBetween: 32,
             },
         },
     });
     
-    console.log(`Swiper initialized with ${slideCount} slides, loop: ${enableLoop}`);
+    console.log(`Swiper initialized with ${slideCount} slides, loop: ${enableLoop}, CSS animation: enabled`);
     
 });
 
