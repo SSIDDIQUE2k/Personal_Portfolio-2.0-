@@ -141,10 +141,10 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category', 'proficiency', 'order', 'is_active']
-    list_filter = ['category', 'is_active']
+    list_display = ['name', 'category', 'proficiency', 'hide_proficiency', 'order', 'is_active']
+    list_filter = ['category', 'is_active', 'hide_proficiency']
     search_fields = ['name']
-    list_editable = ['proficiency', 'order', 'is_active']
+    list_editable = ['proficiency', 'hide_proficiency', 'order', 'is_active']
     ordering = ['order', 'name']
     
     fieldsets = (
@@ -152,7 +152,8 @@ class SkillAdmin(admin.ModelAdmin):
             'fields': ('name', 'category', 'proficiency')
         }),
         ('Display Settings', {
-            'fields': ('order', 'is_active')
+            'fields': ('hide_proficiency', 'order', 'is_active'),
+            'description': 'Hide proficiency percentage to show only the skill name and progress bar'
         })
     )
 

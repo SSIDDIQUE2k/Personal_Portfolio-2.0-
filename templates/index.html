@@ -636,7 +636,7 @@
                             <div class="skills-data animate-in">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -654,7 +654,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -672,7 +672,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -690,7 +690,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -708,7 +708,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -726,7 +726,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -744,7 +744,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -762,7 +762,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -780,7 +780,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -798,7 +798,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -816,7 +816,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>
@@ -834,7 +834,7 @@
                             <div class="skills-data">
                                 <div class="skills-titles">
                                     <h3 class="skills-name">{{ skill.name }}</h3>
-                                    <span class="skills-number">{{ skill.proficiency }}%</span>
+                                    {% if not skill.hide_proficiency %}<span class="skills-number">{{ skill.proficiency }}%</span>{% endif %}
                                 </div>
                                 <div class="skills-bar">
                                     <span class="skills-percentage" data-width="{{ skill.proficiency|default:0 }}"></span>

@@ -181,6 +181,7 @@ class Skill(models.Model):
         ('other', 'Other')
     ], default='frontend', help_text="Skill category")
     proficiency = models.IntegerField(default=80, help_text="Proficiency percentage (0-100)")
+    hide_proficiency = models.BooleanField(default=False, help_text="Hide proficiency percentage on website")
     order = models.IntegerField(default=0, help_text="Display order")
     is_active = models.BooleanField(default=True, help_text="Show this skill")
     
