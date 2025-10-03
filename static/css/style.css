@@ -1262,41 +1262,167 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
 }
 
 @media screen and (max-width: 768px) {
-    .home-img { max-width: 300px; right: 0.5rem; max-height: 55vh; }
-    .about-img { width: 250px; }
-    .qualification-container { grid-template-columns: 290px; row-gap: 3rem; }
-    .skills-container { grid-template-columns: 320px; row-gap: 3.5rem; }
-    .work-container { grid-template-columns: 330px; }
-    .services-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    .services-content { padding: 2.5rem 1.5rem 1.5rem 1.5rem; }
-    .services-icon { font-size: 1.5rem; }
-    .skills-badges { padding-top: 2rem; margin-top: 3rem; }
-    .skills-badges-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; }
-    .skill-badge { padding: 1.2rem; }
-    .badge-icon { font-size: 1.5rem; }
-    .folder-header { flex-direction: column; text-align: center; gap: 0.5rem; }
-    .folder-subtitle { margin-left: 0; }
-    .contact-container { grid-template-columns: 360px; row-gap: 3rem; }
-    .testimonial-card { max-width: 500px; padding: 1rem 1.25rem; }
+    /* Container adjustments */
+    .container { 
+        padding: 0 1rem; 
+        max-width: 100%; 
+    }
+    
+    /* Typography improvements */
+    .section-title { 
+        font-size: 1.8rem; 
+        margin-bottom: 2rem; 
+        text-align: center; 
+    }
+    
+    .section-subtitle { 
+        font-size: 0.9rem; 
+        margin-bottom: 1.5rem; 
+    }
+    
+    /* Home section improvements */
+    .home-img { 
+        max-width: 280px; 
+        right: 0.5rem; 
+        max-height: 50vh; 
+    }
+    
+    /* About section */
+    .about-img { 
+        width: 220px; 
+        margin: 0 auto 2rem; 
+    }
+    
+    /* Grid layouts - single column */
+    .qualification-container { 
+        grid-template-columns: 1fr; 
+        row-gap: 2rem; 
+        padding: 0 1rem; 
+    }
+    
+    .skills-container { 
+        grid-template-columns: 1fr; 
+        row-gap: 2rem; 
+        padding: 0 1rem; 
+    }
+    
+    .work-container { 
+        grid-template-columns: 1fr; 
+        padding: 0 1rem; 
+    }
+    
+    /* Services - 2 columns on tablet */
+    .services-container { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.5rem; 
+        padding: 0 1rem; 
+    }
+    
+    .services-content { 
+        padding: 2rem 1.25rem 1.25rem 1.25rem; 
+    }
+    
+    .services-icon { 
+        font-size: 1.4rem; 
+    }
+    
+    /* Skills badges */
+    .skills-badges { 
+        padding-top: 1.5rem; 
+        margin-top: 2rem; 
+    }
+    
+    .skills-badges-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+        gap: 0.75rem; 
+        padding: 0 1rem; 
+    }
+    
+    .skill-badge { 
+        padding: 1rem; 
+    }
+    
+    .badge-icon { 
+        font-size: 1.4rem; 
+    }
+    
+    /* Folder header */
+    .folder-header { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 0.75rem; 
+    }
+    
+    .folder-subtitle { 
+        margin-left: 0; 
+    }
+    
+    /* Contact section */
+    .contact-container { 
+        grid-template-columns: 1fr; 
+        row-gap: 2rem; 
+        padding: 0 1rem; 
+    }
+    
+    /* Testimonials */
+    .testimonials-container { 
+        padding: 0 1rem; 
+    }
+    
+    .testimonial-card { 
+        max-width: 450px; 
+        padding: 1.25rem 1.5rem; 
+    }
+    
+    /* Footer */
     .footer-container { 
         flex-direction: column; 
         align-items: center; 
         text-align: center; 
         gap: 1.5rem; 
+        padding: 0 1rem; 
     }
+    
     .footer-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 0.5rem;
+        gap: 0.75rem;
     }
-    .footer-socials { justify-content: center; }
-    .footer-bg { padding: 1rem 0 1.5rem; }
-    .footer-copy { margin-top: var(--mb3); }
-    .portfolio-popup-inner { width: 420px; padding: 2.8rem 1.5rem 2.5rem; }
-    .portfolio-popup-content { grid-template-columns: 1fr; row-gap: 1.6rem; }
-    .details-title { font-size: var(--normal-font-size); }
-    .portfolio-popup-close { top: .5rem; }
+    
+    .footer-socials { 
+        justify-content: center; 
+    }
+    
+    .footer-bg { 
+        padding: 1.5rem 0 2rem; 
+    }
+    
+    .footer-copy { 
+        margin-top: var(--mb2); 
+    }
+    
+    /* Portfolio popup */
+    .portfolio-popup-inner { 
+        width: 90%; 
+        max-width: 400px; 
+        padding: 2rem 1.25rem 1.5rem; 
+        margin: 1rem; 
+    }
+    
+    .portfolio-popup-content { 
+        grid-template-columns: 1fr; 
+        row-gap: 1.5rem; 
+    }
+    
+    .details-title { 
+        font-size: var(--normal-font-size); 
+    }
+    
+    .portfolio-popup-close { 
+        top: 0.75rem; 
+        right: 0.75rem; 
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -1670,6 +1796,213 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
         width: 100%;
         max-width: 100%;
         gap: 1.5rem;
+    }
+}
+
+/* Enhanced Mobile Responsiveness - Additional Improvements */
+@media screen and (max-width: 480px) {
+    /* Extra small mobile devices */
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    /* Home section for very small screens */
+    .home-title {
+        font-size: 1.6rem;
+        line-height: 1.1;
+    }
+    
+    .home-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .home-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .home-img {
+        max-width: 75%;
+        max-height: 40vh;
+    }
+    
+    /* Navigation improvements */
+    .nav-toggle {
+        left: 0.75rem;
+        top: 0.75rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.75rem 0;
+    }
+    
+    /* Skills section */
+    .skills-titles {
+        font-size: 0.85rem;
+    }
+    
+    .skills-name {
+        font-size: 0.85rem;
+    }
+    
+    .skills-number {
+        font-size: 0.75rem;
+    }
+    
+    /* Services section */
+    .services-content {
+        padding: 1.25rem 0.75rem 0.75rem 0.75rem;
+    }
+    
+    .services-title {
+        font-size: 0.95rem;
+    }
+    
+    .services-description {
+        font-size: 0.8rem;
+    }
+    
+    /* Portfolio section */
+    .portfolio-img {
+        height: 180px;
+    }
+    
+    .portfolio-title {
+        font-size: 0.95rem;
+    }
+    
+    .portfolio-description {
+        font-size: 0.75rem;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+        padding: 0.75rem 1rem;
+        margin: 0 0.25rem;
+    }
+    
+    .testimonial-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .testimonial-profile-name {
+        font-size: 0.95rem;
+    }
+    
+    .testimonial-profile-detail {
+        font-size: 0.75rem;
+    }
+    
+    /* Contact section */
+    .form-input,
+    .form-textarea {
+        padding: 0.65rem;
+        font-size: 0.85rem;
+    }
+    
+    .button {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Footer */
+    .footer-title {
+        font-size: 0.95rem;
+    }
+    
+    .footer-link {
+        font-size: 0.75rem;
+    }
+    
+    .footer-social-link {
+        font-size: 0.9rem;
+    }
+    
+    .footer-copy {
+        font-size: 0.75rem;
+    }
+}
+
+/* Mobile landscape orientation improvements */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .home {
+        min-height: auto;
+        padding: 1rem 0;
+    }
+    
+    .home-container {
+        min-height: auto;
+        padding: 1rem;
+    }
+    
+    .home-img {
+        max-height: 35vh;
+        max-width: 60%;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .nav-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+    .button:hover,
+    .nav-link:hover,
+    .portfolio-item:hover,
+    .testimonial-card:hover {
+        transform: none;
+    }
+    
+    .button:active,
+    .nav-link:active {
+        transform: scale(0.95);
+    }
+    
+    .portfolio-item:active {
+        transform: scale(0.98);
+    }
+    
+    .testimonial-card:active {
+        transform: translateY(-2px);
+    }
+    
+    /* Larger touch targets */
+    .nav-link {
+        padding: 1.25rem 0;
+        min-height: 44px;
+    }
+    
+    .button {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .home-social-link {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
