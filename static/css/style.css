@@ -232,9 +232,7 @@ input { border: none; outline: none; }
 
 /* Home */
 .home { 
-    background-color: var(--body-color); 
-    background-size: cover; 
-    background-position: center center; 
+    background-color: var(--background-color); 
     height: 100vh; 
 }
 .home-container { 
