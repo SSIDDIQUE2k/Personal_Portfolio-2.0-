@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent  # flat layout
 import os
 SECRET_KEY = os.environ.get('SECRET_KEY', "dev-secret-key-change-me")
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "127.0.0.1,localhost,*").split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "127.0.0.1,localhost,www.ssiddique2k.com,ssiddique2k.com,*").split(',')
 
 # ----------------------------------------------------
 # Applications
@@ -139,6 +139,8 @@ RAILWAY_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'web-production-8f88a.u
 CSRF_TRUSTED_ORIGINS = [
     f'https://{RAILWAY_DOMAIN}',
     'https://web-production-8f88a.up.railway.app',  # Your current Railway domain
+    'https://www.ssiddique2k.com',  # Your custom domain
+    'https://ssiddique2k.com',  # Your custom domain without www
     'http://localhost:8000',  # For local development
     'http://127.0.0.1:8000',  # For local development
 ]
