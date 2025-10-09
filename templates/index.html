@@ -58,120 +58,26 @@
             font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif; 
             font-weight: 900;
         }
-        
-        /* Ensure social links and contact info are visible */
-        .home-social-link {
-            display: inline-block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .info-item {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Ensure text is not truncated */
-        .home-description {
-            white-space: normal !important;
-            overflow: visible !important;
-            text-overflow: unset !important;
-        }
-        
-        /* Additional fallback styles for production */
-        body {
-            font-family: 'Poppins', Arial, sans-serif !important;
-            background-color: #1a1a2e !important;
-            color: #ffffff !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-        
-        .home-container {
-            min-height: 100vh !important;
-            padding: 2rem !important;
-        }
-        
-        .home-data {
-            z-index: 2 !important;
-            text-align: center !important;
-        }
-        
-        .home-title {
-            font-size: 3rem !important;
-            font-weight: bold !important;
-            margin-bottom: 1rem !important;
-            color: #ffffff !important;
-        }
-        
-        .home-subtitle {
-            font-size: 1.5rem !important;
-            color: #667eea !important;
-            margin-bottom: 1rem !important;
-        }
-        
-        .home-description {
-            font-size: 1rem !important;
-            line-height: 1.6 !important;
-            margin-bottom: 2rem !important;
-            color: #cccccc !important;
-        }
-        
-        .button {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 0.5rem !important;
-            padding: 1rem 2rem !important;
-            background-color: #667eea !important;
-            color: white !important;
-            text-decoration: none !important;
-            border-radius: 8px !important;
-            font-weight: 500 !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .button:hover {
-            background-color: #5a6fd8 !important;
-            transform: translateY(-2px) !important;
-        }
-        
-        /* Mobile responsive overrides */
-        @media screen and (max-width: 768px) {
-            .home-container {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                text-align: center !important;
-                padding: 1rem !important;
-            }
-            
-            .home-data {
-                text-align: center !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            
-            .home-title {
-                font-size: 2rem !important;
-                text-align: center !important;
-            }
-            
-            .home-subtitle {
-                font-size: 1.2rem !important;
-                text-align: center !important;
-            }
-            
-            .home-description {
-                font-size: 0.9rem !important;
-                text-align: center !important;
-                max-width: 100% !important;
-            }
-        }
     </style>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6.3">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=6.4">
+    
+    <!-- Background image enhancement styles -->
+    <style>
+        /* Optimize background image display */
+        .home.home-with-bg {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: scroll !important;
+        }
+        
+        /* Light overlay for better text readability */
+        .home.home-with-bg::before {
+            background: rgba(0, 0, 0, 0.2) !important;
+        }
+    </style>
     
     <!-- Stars Background Styles -->
     <style>
@@ -1454,44 +1360,7 @@
     <script src="{% static 'js/theme-manager.js' %}?v=2.8"></script>
     <script src="{% static 'js/main.js' %}?v=5.0"></script>
     
-    <!-- Debug script to check if static files are loading -->
     <script>
-        console.log('=== PORTFOLIO DEBUG INFO ===');
-        console.log('CSS loaded:', document.querySelector('link[href*="style.css"]') ? 'Yes' : 'No');
-        console.log('Unicons loaded:', document.querySelector('link[href*="unicons"]') ? 'Yes' : 'No');
-        console.log('Font Awesome loaded:', document.querySelector('link[href*="font-awesome"]') ? 'Yes' : 'No');
-        console.log('Boxicons loaded:', document.querySelector('link[href*="boxicons"]') ? 'Yes' : 'No');
-        console.log('Swiper loaded:', document.querySelector('link[href*="swiper"]') ? 'Yes' : 'No');
-        console.log('Social links found:', document.querySelectorAll('.home-social-link').length);
-        console.log('Contact info found:', document.querySelectorAll('.info-item').length);
-        console.log('Screen width:', window.innerWidth);
-        console.log('Is mobile:', window.innerWidth <= 576);
-        console.log('Nav toggle element:', document.getElementById('nav-toggle') ? 'Found' : 'Not found');
-        console.log('Sidebar element:', document.getElementById('sidebar') ? 'Found' : 'Not found');
-        console.log('Nav toggle display:', window.getComputedStyle(document.getElementById('nav-toggle')).display);
-        console.log('Nav toggle visibility:', window.getComputedStyle(document.getElementById('nav-toggle')).visibility);
-        console.log('Theme manager loaded:', document.querySelector('script[src*="theme-manager.js"]') ? 'Yes' : 'No');
-        console.log('Main JS loaded:', document.querySelector('script[src*="main.js"]') ? 'Yes' : 'No');
-        
-        // Test if Font Awesome icons are working
-        const testIcon = document.createElement('i');
-        testIcon.className = 'uil-facebook-f';
-        document.body.appendChild(testIcon);
-        const computedStyle = window.getComputedStyle(testIcon, ':before');
-        const iconContent = computedStyle.getPropertyValue('content');
-        console.log('Icon content test:', iconContent);
-        document.body.removeChild(testIcon);
-        
-        // Check if CSS is actually applied
-        const testEl = document.createElement('div');
-        testEl.className = 'home-social-link';
-        document.body.appendChild(testEl);
-        const styles = window.getComputedStyle(testEl);
-        console.log('CSS styles applied:', styles.color !== 'rgb(0, 0, 0)' ? 'Yes' : 'No');
-        document.body.removeChild(testEl);
-        
-        console.log('=== END DEBUG INFO ===');
-        
         // Stars Generation Script
         document.addEventListener('DOMContentLoaded', function() {
             const starsContainer = document.querySelector('.stars');

@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
     
-    console.log(`Swiper initialized with ${slideCount} slides, loop: ${enableLoop}, CSS animation: enabled`);
+    // Swiper initialized
     
 });
 
