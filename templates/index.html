@@ -316,7 +316,7 @@
     </aside>
 
     <main class="main">
-        <section class="home" id="home" {% if site_settings.home_background_image %}style="background-image: url('{{ site_settings.home_background_image.url }}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"{% endif %}>
+        <section class="home{% if site_settings.home_background_image %} home-with-bg{% endif %}" id="home" {% if site_settings.home_background_image %}style="background-image: url('{{ site_settings.home_background_image.url }}');"{% endif %}>
             <div class="home-container container grid">
                 <div class="home-social">
                     <span class="home-social-follow">{{ site_settings.social_follow_text|default:"Follow Me" }}</span>
