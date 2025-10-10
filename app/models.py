@@ -94,7 +94,6 @@ class SiteSettings(models.Model):
     twitter_url = models.URLField(blank=True, help_text="Twitter profile URL")
     linkedin_url = models.URLField(blank=True, help_text="LinkedIn profile URL")
     github_url = models.URLField(blank=True, help_text="GitHub profile URL")
-    pinterest_url = models.URLField(blank=True, help_text="Pinterest profile URL")
     
     # About Section
     about_title = models.CharField(max_length=200, default="About Me", help_text="About section title")

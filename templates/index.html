@@ -257,11 +257,7 @@
                         </a>
                         {% endif %}
                         
-                        {% if site_settings.pinterest_url %}
-                        <a href="{{ site_settings.pinterest_url }}" target="_blank" class="home-social-link animate-bounce" style="animation-delay: 0.6s;">
-                            <i class="uil uil-pinterest"></i>
-                        </a>
-                        {% endif %}
+                        
                     </div>
                 </div>
 
@@ -270,7 +266,7 @@
                     <h1 class="home-title typeJsText">{{ site_settings.welcome_message|default:"Hi, I'm" }} {{ site_settings.full_name|default:"Shazib" }}</h1>
                 </div>
                 <h3 class="home-subtitle">{{ site_settings.job_title|default:"Frontend Developer" }}</h3>
-                <p class="home-description">{{ site_settings.bio|default:"I have high level experience in web design, development knowledge and producing quality work" }}</p>
+                <p class="home-description">{{ site_settings.bio|linebreaks|default:"I have high level experience in web design, development knowledge and producing quality work" }}</p>
                 <a href="#about" class="button animate-wiggle" style="animation-delay: 3.5s;">
                     <i class="uil uil-user button-icon animate-bounce"></i>
                     {{ site_settings.cta_button_text|default:"More About me!" }}
@@ -327,7 +323,7 @@
 
                 <div class="about-data">
                     <h3 class="about-heading">Hi, I'm {{ site_settings.full_name|default:"Shazib" }}, based in {{ site_settings.location|default:"Canada" }}</h3>
-                    <p class="about-description">{{ site_settings.about_description|default:"I'm a web developer, with extensive knowledge and years of experience, working with quality work in web technologies, UI and UX design" }}</p>
+                    <div class="about-description">{{ site_settings.about_description|linebreaks|default:"I'm a web developer, with extensive knowledge and years of experience, working with quality work in web technologies, UI and UX design" }}</div>
 
                     <div class="about-info">
                         <div class="about-box">
@@ -379,7 +375,7 @@
                                 {% endif %}
                             </span>
                             {% if edu.description %}
-                            <p class="timeline-description">{{ edu.description }}</p>
+                            <div class="timeline-description">{{ edu.description|linebreaks }}</div>
                             {% endif %}
                         </div>
                         {% empty %}
@@ -413,7 +409,7 @@
                                 {% endif %}
                             </span>
                             {% if exp.description %}
-                            <p class="timeline-description">{{ exp.description }}</p>
+                            <div class="timeline-description">{{ exp.description|linebreaks }}</div>
                             {% endif %}
                         </div>
                         {% empty %}
@@ -957,7 +953,7 @@
                         <div class="testimonial-quote">
                             <i class='bx bxs-quote-alt-left'></i>
                         </div>
-                        <p class="testimonial-description">{{ testimonial.testimonial_text }}</p>
+                        <div class="testimonial-description">{{ testimonial.testimonial_text|linebreaks }}</div>
                         <h3 class="testimonial-date">{{ testimonial.date|date:"F j, Y" }}</h3>
                         <div class="testimonial-profile">
                             {% if testimonial.image %}
@@ -1342,11 +1338,7 @@
                         </a>
                         {% endif %}
                         
-                        {% if site_settings.pinterest_url %}
-                        <a href="{{ site_settings.pinterest_url }}" target="_blank" class="footer-social">
-                            <i class="uil uil-pinterest"></i>
-                        </a>
-                        {% endif %}
+                        
                     </div>
                 </div>
 
@@ -1354,6 +1346,38 @@
             </div>
         </footer>
     </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#home" class="mobile-nav__link" aria-label="Home">
+            <i class="uil uil-estate"></i>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="mobile-nav__link" aria-label="About">
+            <i class="uil uil-user"></i>
+            <span>About</span>
+        </a>
+        <a href="#skills" class="mobile-nav__link" aria-label="Skills">
+            <i class="uil uil-graph-bar"></i>
+            <span>Skills</span>
+        </a>
+        <a href="#work" class="mobile-nav__link" aria-label="Work">
+            <i class="uil uil-scenery"></i>
+            <span>Work</span>
+        </a>
+        <a href="#services" class="mobile-nav__link" aria-label="Services">
+            <i class="uil uil-clipboard-notes"></i>
+            <span>Services</span>
+        </a>
+        <a href="#testimonials" class="mobile-nav__link" aria-label="Testimonials">
+            <i class="uil uil-comment-lines"></i>
+            <span>Reviews</span>
+        </a>
+        <a href="#contact" class="mobile-nav__link" aria-label="Contact">
+            <i class="uil uil-message"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
